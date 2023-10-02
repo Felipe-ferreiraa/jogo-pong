@@ -1,18 +1,18 @@
 let gameState = 'start';
-        const paddle_1 = document.querySelector('.paddle_1');
-        const paddle_2 = document.querySelector('.paddle_2');
+        let paddle_1 = document.querySelector('.paddle_1');
+        let paddle_2 = document.querySelector('.paddle_2');
         const board = document.querySelector('.board');
         const initial_ball = document.querySelector('.ball');
         const ball = document.querySelector('.ball');
         const score_1 = document.querySelector('.player_1_score');
         const score_2 = document.querySelector('.player_2_score');
-        let message = document.querySelector('.message');
+        const message = document.querySelector('.message');
         let paddle_1_coord = paddle_1.getBoundingClientRect();
         let paddle_2_coord = paddle_2.getBoundingClientRect();
-        let initial_ball_coord = ball.getBoundingClientRect();
+        const initial_ball_coord = ball.getBoundingClientRect();
         let ball_coord = initial_ball_coord;
-        let board_coord = board.getBoundingClientRect();
-        let paddle_common = 
+        const board_coord = board.getBoundingClientRect();
+        const paddle_common = 
             document.querySelector('.paddle').getBoundingClientRect();
         let dx = Math.floor(Math.random() * 4) + 3;
         let dy = Math.floor(Math.random() * 4) + 3;
@@ -51,6 +51,22 @@ let gameState = 'start';
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
+            if (e.key == 'a') {
+              paddle_1.style.left =
+                Math.max(
+                  board_coord.left,
+                  paddle_1_coord.left - window.innerHeight * 0.06
+                ) + 'px';
+              paddle_1_coord = paddle_1.getBoundingClientRect();
+            }
+            if (e.key == 'd') {
+              paddle_1.style.left =
+                Math.max(
+                  board_coord.left,
+                  paddle_1_coord.left + window.innerHeight * 0.06
+                ) + 'px';
+              paddle_1_coord = paddle_1.getBoundingClientRect();
+            }
         
             if (e.key == 'ArrowUp') {
               paddle_2.style.top =
@@ -65,6 +81,22 @@ let gameState = 'start';
                 Math.min(
                   board_coord.bottom - paddle_common.height,
                   paddle_2_coord.top + window.innerHeight * 0.1
+                ) + 'px';
+              paddle_2_coord = paddle_2.getBoundingClientRect();
+            }
+            if (e.key == 'ArrowLeft') {
+              paddle_2.style.left =
+                Math.max(
+                  board_coord.left,
+                  paddle_2_coord.left - window.innerHeight * 0.06
+                ) + 'px';
+              paddle_2_coord = paddle_2.getBoundingClientRect();
+            }
+            if (e.key == 'ArrowRight') {
+              paddle_2.style.left =
+                Math.max(
+                  board_coord.left,
+                  paddle_2_coord.left + window.innerHeight * 0.06
                 ) + 'px';
               paddle_2_coord = paddle_2.getBoundingClientRect();
             }
