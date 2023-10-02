@@ -21,12 +21,13 @@
   }
   
   .ball {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     position: fixed;
     top: calc(50% - 15px);
     left: calc(50% - 15px);
+    background-image: url("boll.jpeg");
   }
   
   .ball_effect {
@@ -34,10 +35,7 @@
     width: 100%;
     border-radius: 100px;
     animation: spinBall 0.1s linear infinite;
-    box-shadow: inset 0 0 18px #fff, 
-      inset 6px 0 18px red,
-      inset -6px 0 18px black, 
-      inset 6px 0 30px red;
+    background-image: url("boll.jpeg");
     border: 1px solid black;
   }
   
