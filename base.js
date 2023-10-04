@@ -62,7 +62,7 @@ let gameState = 'start';
             if (e.key == 'd') {
               paddle_1.style.left =
                 Math.min(
-                  board_coord.right - paddle_common.height,
+                  board_coord.right - (paddle_common.height*0.15),
                   paddle_1_coord.right + window.innerHeight * 0.1
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
