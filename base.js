@@ -61,9 +61,9 @@ let gameState = 'start';
             }
             if (e.key == 'd') {
               paddle_1.style.left =
-                Math.max(
-                  board_coord.left,
-                  paddle_1_coord.left + window.innerHeight * 0.06
+                Math.min(
+                  board_coord.right,
+                  paddle_1_coord.right + window.innerHeight * 0.06
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
@@ -94,15 +94,15 @@ let gameState = 'start';
             }
             if (e.key == 'ArrowRight') {
               paddle_2.style.left =
-                Math.max(
-                  board_coord.left,
-                  paddle_2_coord.left + window.innerHeight * 0.06
+                Math.min(
+                  board_coord.right,
+                  paddle_2_coord.right + window.innerHeight * 0.06
                 ) + 'px';
               paddle_2_coord = paddle_2.getBoundingClientRect();
             }
           }
         });
-        
+
         function moveBall(dx, dy, dxd, dyd) {
           if (ball_coord.top <= board_coord.top) {
             dyd = 1;
@@ -149,6 +149,6 @@ let gameState = 'start';
           ball.style.left = ball_coord.left + dx * (dxd == 0 ? -1 : 1) + 'px';
           ball_coord = ball.getBoundingClientRect();
           requestAnimationFrame(() => {
-            moveBall(dx, dy, dxd, dyd);
+            //moveBall(dx, dy, dxd, dyd);
           });
         }
