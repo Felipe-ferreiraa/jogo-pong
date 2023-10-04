@@ -39,7 +39,7 @@ let gameState = 'start';
               paddle_1.style.top =
                 Math.max(
                   board_coord.top,
-                  paddle_1_coord.top - window.innerHeight * 0.06
+                  paddle_1_coord.top - window.innerHeight * 0.1
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
@@ -47,7 +47,7 @@ let gameState = 'start';
               paddle_1.style.top =
                 Math.min(
                   board_coord.bottom - paddle_common.height,
-                  paddle_1_coord.top + window.innerHeight * 0.06
+                  paddle_1_coord.top + window.innerHeight * 0.1
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
@@ -55,15 +55,15 @@ let gameState = 'start';
               paddle_1.style.left =
                 Math.max(
                   board_coord.left,
-                  paddle_1_coord.left - window.innerHeight * 0.06
+                  paddle_1_coord.left - window.innerHeight * 0.1
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
             if (e.key == 'd') {
               paddle_1.style.left =
                 Math.min(
-                  board_coord.right,
-                  paddle_1_coord.right + window.innerHeight * 0.06
+                  board_coord.right - paddle_common.height,
+                  paddle_1_coord.right + window.innerHeight * 0.1
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
@@ -88,15 +88,15 @@ let gameState = 'start';
               paddle_2.style.left =
                 Math.max(
                   board_coord.left,
-                  paddle_2_coord.left - window.innerHeight * 0.06
+                  paddle_2_coord.left - window.innerHeight * 0.1
                 ) + 'px';
               paddle_2_coord = paddle_2.getBoundingClientRect();
             }
             if (e.key == 'ArrowRight') {
               paddle_2.style.left =
                 Math.min(
-                  board_coord.right,
-                  paddle_2_coord.right + window.innerHeight * 0.06
+                  board_coord.right - (paddle_common.height*0.15),
+                  paddle_2_coord.right + window.innerHeight * 0.1
                 ) + 'px';
               paddle_2_coord = paddle_2.getBoundingClientRect();
             }
