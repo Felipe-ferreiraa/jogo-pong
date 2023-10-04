@@ -149,6 +149,6 @@ let gameState = 'start';
           ball.style.left = ball_coord.left + dx * (dxd == 0 ? -1 : 1) + 'px';
           ball_coord = ball.getBoundingClientRect();
           requestAnimationFrame(() => {
-            //moveBall(dx, dy, dxd, dyd);
+            moveBall(dx, dy, dxd, dyd);
           });
         }
