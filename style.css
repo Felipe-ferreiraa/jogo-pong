@@ -16,7 +16,7 @@
   .board {
     height: 85vh;
     width: 80vw;
-    background-color: rgb(13, 197, 13);
+    background-color: rgb(11, 91, 11);
     border-radius: 14px;
   }
   
@@ -99,4 +99,18 @@
     color: white;
     left: 38vw;
     margin: -30px auto auto auto;
+  }
+
+  .my_button {
+    color: rgb(0, 0, 0);
+    height: 25px;
+    width: 65px;
+    position: fixed;
+    margin-top: -35px;
+    left: 85vw;
+    font-family: fantasy;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(167, 170, 172);
+    cursor: pointer;
   }
