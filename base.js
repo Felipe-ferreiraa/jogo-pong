@@ -19,6 +19,9 @@ let gameState = 'start';
         let ball_coord = initial_ball_coord;
         const board_coord = board.getBoundingClientRect();
 
+        //bônus do jogo
+        const imgBonus = document.querySelector('#bonus');
+
         const message = document.querySelector('.message');
         let dx = Math.floor(Math.random() * 4) + 3;
         let dy = Math.floor(Math.random() * 4) + 3;
