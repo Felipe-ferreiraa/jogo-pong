@@ -41,6 +41,7 @@ let gameState = 'start';
             }
           }
           if (gameState == 'play') {
+            //movimentação do paddle 1
             if (e.key == 'w') {
               paddle_1.style.top =
                 Math.max(
@@ -73,7 +74,8 @@ let gameState = 'start';
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
-        
+
+            //movimentação do paddle 2
             if (e.key == 'ArrowUp') {
               paddle_2.style.top =
                 Math.max(
@@ -106,6 +108,8 @@ let gameState = 'start';
                 ) + 'px';
               paddle_2_coord = paddle_2.getBoundingClientRect();
             }
+            
+            //invalidar tecla alt
             if(e.key == "Alt"){
               e.preventDefault();
               alert("tecla Invalida");
@@ -113,6 +117,7 @@ let gameState = 'start';
           }
         });
 
+        //função de movimentação da bola
         function moveBall(dx, dy, dxd, dyd) {
           if (ball_coord.top <= board_coord.top) {
             dyd = 1;
