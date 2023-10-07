@@ -34,6 +34,7 @@ let gameState = 'start';
         const bonus = document.createElement('div');
         bonus.classList.add('bonus');
 
+        
         // Posiciona o bônus aleatoriamente no tabuleiro de jogo
         bonus.style.top = Math.floor(Math.random() * board.offsetHeight) + 'px';
         bonus.style.left = Math.floor(Math.random() * board.offsetWidth) + 'px';

@@ -1,126 +1,126 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-  }
-  
-  .board {
-    height: 85vh;
-    width: 80vw;
-    background-color: rgb(11, 91, 11);
-    border-radius: none;
-  }
-  
-  .ball {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    position: fixed;
-    top: calc(50% - 15px);
-    left: calc(50% - 15px);
-    background-image: url("bola\ do\ jogo.jpg");
-  }
-  
-  .ball_effect {
-    height: 100%;
-    width: 100%;
-    border-radius: 100px;
-    animation: spinBall 0.1s linear infinite;
-    background-image: url("bola\ do\ jogo.jpg");
-    border: 1px solid black;
-  }
-  
-  /*@keyframes spinBall {
-    100% {
-      -webkit-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
-  }
-  */
-  .paddle {
-    height: 100px;
-    width: 15px;
-    border-radius: 5%;
-    position: fixed;
-  }
-  
-  .paddle_1 {
-    top: calc(40vh);
-    left: calc(12vw);
-    background-color: black;
-  }
-  
-  .paddle_2 {
-    top: calc(40vh);
-    right: calc(12vw);
-    background-color: white;
-  }
-  
-  .player_1_score {
-    height: 50px;
-    width: 50px;
-    color: white;
-    position: fixed;
-    left: 30vw;
-    margin-top: -40px;
-  }
-  
-  .player_2_score {
-    height: 50px;
-    width: 50px;
-    color: white;
-    position: fixed;
-    left: 70vw;
-    margin-top: -40px;
-  }
-  
-  .message {
-    font-size: large;
-    position: fixed;
-    height: 10vh;
-    width: 30vw;
-    color: white;
-    left: 38vw;
-    margin: -30px auto auto auto;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .my_button {
-    color: rgb(0, 0, 0);
-    height: 25px;
-    width: 65px;
-    position: fixed;
-    margin-top: -35px;
-    left: 85vw;
-    font-family: fantasy;
-    border-radius: 10px;
-    border: none;
-    background-color: rgb(167, 170, 172);
-    cursor: pointer;
-  }
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
 
-  .my_button:hover {
-    background-color: rgb(167, 170, 172);
-    color: rgb(0, 0, 0);
-    transform: scale(1.1);
-    -webkit-transition-duration: 0.5s;
-    transition-duration: 0.4s;     
-  }
+.board {
+  height: 85vh;
+  width: 80vw;
+  background-color: rgb(11, 91, 11);
+  border-radius: none;
+}
 
-  .bonus {
-    width: 50px;
-    height: 50px;
-    margin-top: 100px;
-    left: 48vw;
-    background-color: rgb(0, 17, 255);
-    border-radius: 20%;
-    position: absolute;
+.ball {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  position: fixed;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  background-image: url("bola\ do\ jogo.jpg");
+}
+
+.ball_effect {
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  animation: spinBall 0.1s linear infinite;
+  background-image: url("bola\ do\ jogo.jpg");
+  border: 1px solid black;
+}
+
+/*@keyframes spinBall {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
+}
+*/
+.paddle {
+  height: 100px;
+  width: 15px;
+  border-radius: 5%;
+  position: fixed;
+}
+
+.paddle_1 {
+  top: calc(40vh);
+  left: calc(12vw);
+  background-color: black;
+}
+
+.paddle_2 {
+  top: calc(40vh);
+  right: calc(12vw);
+  background-color: white;
+}
+
+.player_1_score {
+  height: 50px;
+  width: 50px;
+  color: white;
+  position: fixed;
+  left: 30vw;
+  margin-top: -40px;
+}
+
+.player_2_score {
+  height: 50px;
+  width: 50px;
+  color: white;
+  position: fixed;
+  left: 70vw;
+  margin-top: -40px;
+}
+
+.message {
+  font-size: large;
+  position: fixed;
+  height: 10vh;
+  width: 30vw;
+  color: white;
+  left: 38vw;
+  margin: -30px auto auto auto;
+}
+
+.my_button {
+  color: rgb(0, 0, 0);
+  height: 25px;
+  width: 65px;
+  position: fixed;
+  margin-top: -35px;
+  left: 85vw;
+  font-family: fantasy;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(167, 170, 172);
+  cursor: pointer;
+}
+
+.my_button:hover {
+  background-color: rgb(167, 170, 172);
+  color: rgb(0, 0, 0);
+  transform: scale(1.1);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.4s;     
+}
+
+.bonus {
+  width: 50px;
+  height: 50px;
+  margin-top: 100px;
+  left: 48vw;
+  background-color: rgb(0, 17, 255);
+  border-radius: 20%;
+  position: absolute;
+}
