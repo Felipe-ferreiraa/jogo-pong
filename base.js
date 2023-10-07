@@ -10,7 +10,7 @@ let gameState = 'start';
         //Seleciona as coordenadas dos paddles
         let paddle_1_coord = paddle_1.getBoundingClientRect();
         let paddle_2_coord = paddle_2.getBoundingClientRect();
-        const paddle_common = document.querySelector('.paddle').getBoundingClientRect();
+        let paddle_common = document.querySelector('.paddle').getBoundingClientRect();
 
         //Seleciona o board (tabuleiro)
         const board = document.querySelector('.board');
@@ -21,16 +21,43 @@ let gameState = 'start';
         const initial_ball_coord = ball.getBoundingClientRect();
         let ball_coord = initial_ball_coord;
         const board_coord = board.getBoundingClientRect();
-
-        //bônus do jogo
-        const imgBonus = document.querySelector('#bonus');
+        
 
         const message = document.querySelector('.message');
         let dx = Math.floor(Math.random() * 4) + 3;
         let dy = Math.floor(Math.random() * 4) + 3;
         let dxd = Math.floor(Math.random() * 2);
         let dyd = Math.floor(Math.random() * 2);
-        
+
+        //BONUS
+        // Cria um novo elemento HTML para representar o bônus
+        const bonus = document.createElement('div');
+        bonus.classList.add('bonus');
+
+        // Posiciona o bônus aleatoriamente no tabuleiro de jogo
+        bonus.style.top = Math.floor(Math.random() * board.offsetHeight) + 'px';
+        bonus.style.left = Math.floor(Math.random() * board.offsetWidth) + 'px';
+
+        // Adiciona o bônus ao tabuleiro de jogo
+        board.appendChild(bonus);
+        // Adiciona um listener de eventos ao elemento `bonus` para detectar quando a bola colidiu com ele
+        bonus.addEventListener('collision', () => {
+          function update() {
+            // Verifica a colisão da bola com o bônus
+            if (ball_coord.getBoundingClientRect().intersects(bonus.getBoundingClientRect())) {
+              // Atualiza a cor dos paddles
+              paddle_1.style.backgroundColor = Math.floor(Math.random() * 255) + ',' +
+                                              Math.floor(Math.random() * 255) + ',' +
+                                              Math.floor(Math.random() * 255);
+              paddle_2.style.backgroundColor = Math.floor(Math.random() * 255) + ',' +
+                                              Math.floor(Math.random() * 255) + ',' +
+                                              Math.floor(Math.random() * 255);
+          
+              // Remove o bônus do tabuleiro
+              bonus.remove();
+            }}});
+
+              
         //Adiciona um listener de eventos ao documento para fazer a captura dos pressionamentos de teclas
         document.addEventListener('keydown', (e) => {
           //Se a tecla pressionada for enter, o jogo começa
@@ -41,8 +68,8 @@ let gameState = 'start';
               message.innerHTML = 'Game Started';
               message.style.left = 42 + 'vw';
               requestAnimationFrame(() => {
-                dx = Math.floor(Math.random() * 4) + 3;
-                dy = Math.floor(Math.random() * 4) + 3;
+                dx = 4;
+                dy = 4;
                 dxd = Math.floor(Math.random() * 2);
                 dyd = Math.floor(Math.random() * 2);
                 moveBall(dx, dy, dxd, dyd);  
@@ -130,7 +157,7 @@ let gameState = 'start';
         function moveBall(dx, dy, dxd, dyd) {
           if (ball_coord.top <= board_coord.top) {
             dyd = 1;
-          }
+          }       
           //Verifica se a bola colidiu com as bordas do tabuleiro, se sim o jogo é reiniciado
           if (ball_coord.bottom >= board_coord.bottom) {
             dyd = 0;
@@ -179,5 +206,6 @@ let gameState = 'start';
           // Chama a função novamente
           requestAnimationFrame(() => {
             moveBall(dx, dy, dxd, dyd);
+            update();
           });
         }
