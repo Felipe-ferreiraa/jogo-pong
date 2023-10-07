@@ -1,18 +1,21 @@
+//Define o estado do jogo 
 let gameState = 'start';
         
-        //paddle 1 and 2
+        //Seleciona os paddles 
         let paddle_1 = document.querySelector('.paddle_1');
         let paddle_2 = document.querySelector('.paddle_2');
+        //Seleciona o placar
         const score_1 = document.querySelector('.player_1_score');
         const score_2 = document.querySelector('.player_2_score');
+        //Seleciona as coordenadas dos paddles
         let paddle_1_coord = paddle_1.getBoundingClientRect();
         let paddle_2_coord = paddle_2.getBoundingClientRect();
         const paddle_common = document.querySelector('.paddle').getBoundingClientRect();
-        
-        //board
+
+        //Seleciona o board (tabuleiro)
         const board = document.querySelector('.board');
-        
-        //ball
+
+        //Configurações inicias da bola e suas coordenadas 
         const initial_ball = document.querySelector('.ball');
         const ball = document.querySelector('.ball');
         const initial_ball_coord = ball.getBoundingClientRect();
@@ -28,9 +31,12 @@ let gameState = 'start';
         let dxd = Math.floor(Math.random() * 2);
         let dyd = Math.floor(Math.random() * 2);
         
+        //Adiciona um listener de eventos ao documento para fazer a captura dos pressionamentos de teclas
         document.addEventListener('keydown', (e) => {
+          //Se a tecla pressionada for enter, o jogo começa
           if (e.key == 'Enter') {
             gameState = gameState == 'start' ? 'play' : 'start';
+            //Se o jogo estiver em andamento, a bola começa a se movimentar
             if (gameState == 'play') {
               message.innerHTML = 'Game Started';
               message.style.left = 42 + 'vw';
@@ -39,12 +45,12 @@ let gameState = 'start';
                 dy = Math.floor(Math.random() * 4) + 3;
                 dxd = Math.floor(Math.random() * 2);
                 dyd = Math.floor(Math.random() * 2);
-                moveBall(dx, dy, dxd, dyd);
+                moveBall(dx, dy, dxd, dyd);  
               });
             }
           }
           if (gameState == 'play') {
-            //movimentação do paddle 1
+            //Movimentação do paddle 1 para cima, baixo, esquerda e direita
             if (e.key == 'w') {
               paddle_1.style.top =
                 Math.max(
@@ -78,7 +84,7 @@ let gameState = 'start';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
 
-            //movimentação do paddle 2
+            //Movimentação do paddle 2 para cima, baixo, esquerda e direita
             if (e.key == 'ArrowUp') {
               paddle_2.style.top =
                 Math.max(
@@ -115,19 +121,21 @@ let gameState = 'start';
             //invalidar tecla alt
             if(e.key == "Alt"){
               e.preventDefault();
-              alert("tecla Invalida");
+              //alert("tecla Invalida");
             }
           }
         });
 
-        //função de movimentação da bola
+        //Função de movimentação da bola onde dx é a direção horizontal, dy é a direção vertical e dxd e dyd é a direção da bola no proximo update
         function moveBall(dx, dy, dxd, dyd) {
           if (ball_coord.top <= board_coord.top) {
             dyd = 1;
           }
+          //Verifica se a bola colidiu com as bordas do tabuleiro, se sim o jogo é reiniciado
           if (ball_coord.bottom >= board_coord.bottom) {
             dyd = 0;
           }
+          //Verifica se a bola colidiu com o paddle 1, se sim a direção da bola é invertida
           if (
             ball_coord.left <= paddle_1_coord.right &&
             ball_coord.top >= paddle_1_coord.top &&
@@ -137,6 +145,7 @@ let gameState = 'start';
             dx = Math.floor(Math.random() * 4) + 3;
             dy = Math.floor(Math.random() * 4) + 3;
           }
+          //Verifica se a bola colidiu com o paddle 2, se sim a direção da bola é invertida
           if (
             ball_coord.right >= paddle_2_coord.left &&
             ball_coord.top >= paddle_2_coord.top &&
@@ -150,21 +159,24 @@ let gameState = 'start';
             ball_coord.left <= board_coord.left ||
             ball_coord.right >= board_coord.right
           ) {
+            //Atualiza o placar
             if (ball_coord.left <= board_coord.left) {
               score_2.innerHTML = +score_2.innerHTML + 1;
             } else {
               score_1.innerHTML = +score_1.innerHTML + 1;
             }
-            gameState = 'start';
+            gameState = 'start';   
             ball_coord = initial_ball_coord;
             ball.style = initial_ball.style;
             message.innerHTML = 'Press Enter to Play Pong';
-            message.style.left = 38 + 'vw';
+            message.style.left = 38 + 'vw'; 
             return;
           }
+          // Atualiza as coordenadas da bola
           ball.style.top = ball_coord.top + dy * (dyd == 0 ? -1 : 1) + 'px';
           ball.style.left = ball_coord.left + dx * (dxd == 0 ? -1 : 1) + 'px';
           ball_coord = ball.getBoundingClientRect();
+          // Chama a função novamente
           requestAnimationFrame(() => {
             moveBall(dx, dy, dxd, dyd);
           });
