@@ -34,7 +34,7 @@ let gameState = 'start';
         const bonus = document.createElement('div');
         bonus.classList.add('bonus');
 
-        
+
         // Posiciona o bônus aleatoriamente no tabuleiro de jogo
         bonus.style.top = Math.floor(Math.random() * board.offsetHeight) + 'px';
         bonus.style.left = Math.floor(Math.random() * board.offsetWidth) + 'px';
@@ -79,7 +79,7 @@ let gameState = 'start';
           }
           if (gameState == 'play') {
             //Movimentação do paddle 1 para cima, baixo, esquerda e direita
-            if (e.key == 'w') {
+            if (e.key == 'w' || e.key == 'W') {
               paddle_1.style.top =
                 Math.max(
                   board_coord.top,
@@ -87,7 +87,7 @@ let gameState = 'start';
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
-            if (e.key == 's') {
+            if (e.key == 's' || e.key == 'S') {
               paddle_1.style.top =
                 Math.min(
                   board_coord.bottom - paddle_common.height,
@@ -95,7 +95,7 @@ let gameState = 'start';
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
-            if (e.key == 'a') {
+            if (e.key == 'a' || e.key == 'A') {
               paddle_1.style.left =
                 Math.max(
                   board_coord.left,
@@ -103,7 +103,7 @@ let gameState = 'start';
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
-            if (e.key == 'd') {
+            if (e.key == 'd' || e.key == 'D') {
               paddle_1.style.left =
                 Math.min(
                   board_coord.right - (paddle_common.height*0.15),

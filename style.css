@@ -122,5 +122,5 @@ body {
   left: 48vw;
   background-color: rgb(0, 17, 255);
   border-radius: 20%;
-  position: absolute;
+  position: fixed;
 }
