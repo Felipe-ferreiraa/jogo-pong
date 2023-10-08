@@ -2,8 +2,8 @@
 let gameState = 'start';
         
         //Seleciona os paddles 
-        let paddle_1 = document.querySelector('.paddle_1');
-        let paddle_2 = document.querySelector('.paddle_2');
+        const paddle_1 = document.querySelector('.paddle_1');
+        const paddle_2 = document.querySelector('.paddle_2');
         //Seleciona as paredes
         const wall_left1 = document.querySelector('.wall_left1');
         const wall_left2 = document.querySelector('.wall_left2');
