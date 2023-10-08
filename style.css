@@ -57,12 +57,22 @@ body {
   top: calc(40vh);
   left: calc(12vw);
   background-color: black;
+  box-shadow: inset 0 0 18px white, 
+  inset 6px 0 18px white,
+  inset -6px 0 18px white, 
+  inset 6px 0 30px white;
+  border: 1px solid black;
 }
 
 .paddle_2 {
   top: calc(40vh);
   right: calc(12vw);
   background-color: white;
+  box-shadow: inset 0 0 18px black, 
+  inset 6px 0 18px black,
+  inset -6px 0 18px black, 
+  inset 6px 0 30px black;
+  border: 1px solid white;
 }
 
 .player_1_score {
