@@ -4,9 +4,11 @@ let gameState = 'start';
         //Seleciona os paddles 
         let paddle_1 = document.querySelector('.paddle_1');
         let paddle_2 = document.querySelector('.paddle_2');
-        //Seleciona as paredes invisiveis
+        //Seleciona as paredes
         let wall_left1 = document.querySelector('.wall_left1');
         let wall_left2 = document.querySelector('.wall_left2');
+        let wall_right1 = document.querySelector('.wall_right1');
+        let wall_right2 = document.querySelector('.wall_right2');
         //Seleciona o placar
         const score_1 = document.querySelector('.player_1_score');
         const score_2 = document.querySelector('.player_2_score');
@@ -17,6 +19,8 @@ let gameState = 'start';
         //Seleciona as coordenadas das paredes
         let wall_left1_coord = wall_left1.getBoundingClientRect();
         let wall_left2_coord = wall_left2.getBoundingClientRect();
+        let wall_right1_coord = wall_right1.getBoundingClientRect();
+        let wall_right2_coord = wall_right2.getBoundingClientRect();
 
         //Seleciona o board (tabuleiro)
         const board = document.querySelector('.board');
@@ -185,7 +189,7 @@ let gameState = 'start';
             dx = Math.floor(Math.random() * 4) + 3;
             dy = Math.floor(Math.random() * 4) + 3;
           }
-          //Verifica se a bola colidiu com a parede 1, se sim a direção da bola é invertida
+          //Verifica se a bola colidiu com a parede esquerda 1, se sim a direção da bola é invertida
           if (
             ball_coord.left <= wall_left1_coord.right &&
             ball_coord.top >= wall_left1_coord.top &&
@@ -196,7 +200,7 @@ let gameState = 'start';
             dx = Math.floor(Math.random() * 4) + 3;
             dy = Math.floor(Math.random() * 4) + 3;
           }
-          //Verifica se a bola colidiu com a parede 2, se sim a direção da bola é invertida
+          //Verifica se a bola colidiu com a parede esquerda 2, se sim a direção da bola é invertida
           if (
             ball_coord.left <= wall_left2_coord.right &&
             ball_coord.top >= wall_left2_coord.top &&
@@ -213,6 +217,28 @@ let gameState = 'start';
             ball_coord.top >= paddle_2_coord.top &&
             ball_coord.bottom <= paddle_2_coord.bottom &&
             ball_coord.left <= paddle_2_coord.right
+          ) {
+            dxd = 0;
+            dx = Math.floor(Math.random() * 4) + 3;
+            dy = Math.floor(Math.random() * 4) + 3;
+          }
+          //Verifica se a bola colidiu com a parede direita 1, se sim a direção da bola é invertida
+          if (
+            ball_coord.right >= wall_right1_coord.left &&
+            ball_coord.top >= wall_right1_coord.top &&
+            ball_coord.bottom <= wall_right1_coord.bottom &&
+            ball_coord.left <= wall_right1_coord.right
+          ) {
+            dxd = 0;
+            dx = Math.floor(Math.random() * 4) + 3;
+            dy = Math.floor(Math.random() * 4) + 3;
+          }
+          //Verifica se a bola colidiu com a parede direita 2, se sim a direção da bola é invertida
+          if (
+            ball_coord.right >= wall_right2_coord.left &&
+            ball_coord.top >= wall_right2_coord.top &&
+            ball_coord.bottom <= wall_right2_coord.bottom &&
+            ball_coord.left <= wall_right2_coord.right
           ) {
             dxd = 0;
             dx = Math.floor(Math.random() * 4) + 3;
