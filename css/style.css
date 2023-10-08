@@ -27,7 +27,7 @@ body {
   position: fixed;
   top: calc(50% - 15px);
   left: calc(50% - 15px);
-  background-image: url("bola\ do\ jogo.jpg");
+  background-image: url('./././../img/bola\ do\ jogo.jpg');
 }
 
 .ball_effect {
@@ -35,7 +35,7 @@ body {
   width: 100%;
   border-radius: 100px;
   animation: spinBall 0.1s linear infinite;
-  background-image: url("bola\ do\ jogo.jpg");
+  background-image: url('./././../img/bola\ do\ jogo.jpg');
   border: 1px solid black;
 }
 
