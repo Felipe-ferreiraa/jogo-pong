@@ -134,3 +134,22 @@ body {
   border-radius: 20%;
   position: fixed;
 }
+
+.wall_left1 {
+  width: 20px;
+  height: 150px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 60px;
+  left: 140px;
+  border-radius: 14px;
+}
+.wall_left2 {
+  width: 20px;
+  height: 150px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 560px;
+  left: 140px;
+  border-radius: 14px;
+}

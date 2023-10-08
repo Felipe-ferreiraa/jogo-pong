@@ -4,6 +4,9 @@ let gameState = 'start';
         //Seleciona os paddles 
         let paddle_1 = document.querySelector('.paddle_1');
         let paddle_2 = document.querySelector('.paddle_2');
+        //Seleciona as paredes invisiveis
+        let wall_left1 = document.querySelector('.wall_left1');
+        let wall_left2 = document.querySelector('.wall_left2');
         //Seleciona o placar
         const score_1 = document.querySelector('.player_1_score');
         const score_2 = document.querySelector('.player_2_score');
@@ -11,6 +14,9 @@ let gameState = 'start';
         let paddle_1_coord = paddle_1.getBoundingClientRect();
         let paddle_2_coord = paddle_2.getBoundingClientRect();
         let paddle_common = document.querySelector('.paddle').getBoundingClientRect();
+        //Seleciona as coordenadas das paredes
+        let wall_left1_coord = wall_left1.getBoundingClientRect();
+        let wall_left2_coord = wall_left2.getBoundingClientRect();
 
         //Seleciona o board (tabuleiro)
         const board = document.querySelector('.board');
@@ -174,6 +180,28 @@ let gameState = 'start';
             ball_coord.top >= paddle_1_coord.top &&
             ball_coord.bottom <= paddle_1_coord.bottom &&
             ball_coord.right >= paddle_1_coord.left
+          ) {
+            dxd = 1;
+            dx = Math.floor(Math.random() * 4) + 3;
+            dy = Math.floor(Math.random() * 4) + 3;
+          }
+          //Verifica se a bola colidiu com a parede 1, se sim a direção da bola é invertida
+          if (
+            ball_coord.left <= wall_left1_coord.right &&
+            ball_coord.top >= wall_left1_coord.top &&
+            ball_coord.bottom <= wall_left1_coord.bottom &&
+            ball_coord.right >= wall_left1_coord.left
+          ) {
+            dxd = 1;
+            dx = Math.floor(Math.random() * 4) + 3;
+            dy = Math.floor(Math.random() * 4) + 3;
+          }
+          //Verifica se a bola colidiu com a parede 2, se sim a direção da bola é invertida
+          if (
+            ball_coord.left <= wall_left2_coord.right &&
+            ball_coord.top >= wall_left2_coord.top &&
+            ball_coord.bottom <= wall_left2_coord.bottom &&
+            ball_coord.right >= wall_left2_coord.left
           ) {
             dxd = 1;
             dx = Math.floor(Math.random() * 4) + 3;
