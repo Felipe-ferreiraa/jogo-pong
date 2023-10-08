@@ -5,10 +5,10 @@ let gameState = 'start';
         let paddle_1 = document.querySelector('.paddle_1');
         let paddle_2 = document.querySelector('.paddle_2');
         //Seleciona as paredes
-        let wall_left1 = document.querySelector('.wall_left1');
-        let wall_left2 = document.querySelector('.wall_left2');
-        let wall_right1 = document.querySelector('.wall_right1');
-        let wall_right2 = document.querySelector('.wall_right2');
+        const wall_left1 = document.querySelector('.wall_left1');
+        const wall_left2 = document.querySelector('.wall_left2');
+        const wall_right1 = document.querySelector('.wall_right1');
+        const wall_right2 = document.querySelector('.wall_right2');
         //Seleciona o placar
         const score_1 = document.querySelector('.player_1_score');
         const score_2 = document.querySelector('.player_2_score');
@@ -17,10 +17,10 @@ let gameState = 'start';
         let paddle_2_coord = paddle_2.getBoundingClientRect();
         let paddle_common = document.querySelector('.paddle').getBoundingClientRect();
         //Seleciona as coordenadas das paredes
-        let wall_left1_coord = wall_left1.getBoundingClientRect();
-        let wall_left2_coord = wall_left2.getBoundingClientRect();
-        let wall_right1_coord = wall_right1.getBoundingClientRect();
-        let wall_right2_coord = wall_right2.getBoundingClientRect();
+        const wall_left1_coord = wall_left1.getBoundingClientRect();
+        const wall_left2_coord = wall_left2.getBoundingClientRect();
+        const wall_right1_coord = wall_right1.getBoundingClientRect();
+        const wall_right2_coord = wall_right2.getBoundingClientRect();
 
         //Seleciona o board (tabuleiro)
         const board = document.querySelector('.board');
