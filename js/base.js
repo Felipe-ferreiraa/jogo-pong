@@ -79,7 +79,7 @@ let gameState = 'start';
             }
           }
           if (gameState == 'play') {
-            //Movimentação do paddle 1 para cima, baixo, esquerda e direita
+            //Movimentação do paddle 1 para cima, verifica se a tecla w ou W foi pressionada, se sim o paddle se move para cima garantindo que o mesmo não ultrapasse o topo do tabuleiro (com o uso do metodo Math.max())
             if (e.key == 'w' || e.key == 'W') {
               paddle_1.style.top =
                 Math.max(
@@ -88,6 +88,7 @@ let gameState = 'start';
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
+            //Movimentação do paddle 1 para baixo, verifica se a tecla s ou S foi pressionada, se sim o paddle se move para baixo garantindo que o mesmo não ultrapasse o fundo do tabuleiro (com o uso do metodo Math.min())
             if (e.key == 's' || e.key == 'S') {
               paddle_1.style.top =
                 Math.min(
@@ -96,6 +97,7 @@ let gameState = 'start';
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
+            //Movimentação do paddle 1 para a esquerda, verifica se a tecla a ou A foi pressionada, se sim o paddle se move para esquerda garantindo que o mesmo não ultrapasse a esquerda do tabuleiro (com o uso do metodo Math.max())
             if (e.key == 'a' || e.key == 'A') {
               paddle_1.style.left =
                 Math.max(
@@ -104,6 +106,7 @@ let gameState = 'start';
                 ) + 'px';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
+            //Movimentação do paddle 1 para direita, verifica se a tecla d ou D foi pressionada, se sim o paddle se move para direita garantindo que o mesmo não ultrapasse a direita do tabuleiro (com o uso do metodo Math.min())
             if (e.key == 'd' || e.key == 'D') {
               paddle_1.style.left =
                 Math.min(
@@ -113,7 +116,7 @@ let gameState = 'start';
               paddle_1_coord = paddle_1.getBoundingClientRect();
             }
 
-            //Movimentação do paddle 2 para cima, baixo, esquerda e direita
+            //Movimentação do paddle 2 para cima, baixo, esquerda e direita. Utilizando a mesma logica do paddle 1
             if (e.key == 'ArrowUp') {
               paddle_2.style.top =
                 Math.max(
@@ -157,10 +160,11 @@ let gameState = 'start';
 
         //Função de movimentação da bola onde dx é a direção horizontal, dy é a direção vertical e dxd e dyd é a direção da bola no proximo update
         function moveBall(dx, dy, dxd, dyd) {
+          //Verifica se a bola colidiu com as borda superior do tabuleiro, se sim a direção da bola é invertida
           if (ball_coord.top <= board_coord.top) {
             dyd = 1;
           }       
-          //Verifica se a bola colidiu com as bordas do tabuleiro, se sim o jogo é reiniciado
+          //Verifica se a bola colidiu com as borda inferior do tabuleiro, se sim a direção da bola é invertida
           if (ball_coord.bottom >= board_coord.bottom) {
             dyd = 0;
           }
@@ -186,6 +190,7 @@ let gameState = 'start';
             dx = Math.floor(Math.random() * 4) + 3;
             dy = Math.floor(Math.random() * 4) + 3;
           }
+          //Verifica se a bola colidiu com as bordas laterais do tabuleiro, se sim o placar é atualizado e a bola volta para a posição inicial
           if (
             ball_coord.left <= board_coord.left ||
             ball_coord.right >= board_coord.right
@@ -210,6 +215,5 @@ let gameState = 'start';
           // Chama a função novamente
           requestAnimationFrame(() => {
             moveBall(dx, dy, dxd, dyd);
-            update();
           });
         }
