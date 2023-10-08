@@ -217,3 +217,4 @@ let gameState = 'start';
             moveBall(dx, dy, dxd, dyd);
           });
         }
+        
