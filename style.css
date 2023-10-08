@@ -17,7 +17,7 @@ body {
   height: 85vh;
   width: 80vw;
   background-color: rgb(11, 91, 11);
-  border-radius: none;
+  border-radius: 14px;
 }
 
 .ball {
@@ -39,13 +39,13 @@ body {
   border: 1px solid black;
 }
 
-/*@keyframes spinBall {
+@keyframes spinBall {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
-*/
+
 .paddle {
   height: 100px;
   width: 15px;

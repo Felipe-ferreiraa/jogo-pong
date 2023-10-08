@@ -31,7 +31,7 @@ let gameState = 'start';
 
         //BONUS
         // Cria um novo elemento HTML para representar o bônus
-        const bonus = document.createElement('div');
+        /*const bonus = document.createElement('div');
         bonus.classList.add('bonus');
 
 
@@ -41,6 +41,7 @@ let gameState = 'start';
 
         // Adiciona o bônus ao tabuleiro de jogo
         board.appendChild(bonus);
+
         // Adiciona um listener de eventos ao elemento `bonus` para detectar quando a bola colidiu com ele
         bonus.addEventListener('collision', () => {
           function update() {
@@ -56,7 +57,7 @@ let gameState = 'start';
           
               // Remove o bônus do tabuleiro
               bonus.remove();
-            }}});
+            }}});*/
 
               
         //Adiciona um listener de eventos ao documento para fazer a captura dos pressionamentos de teclas
@@ -149,7 +150,7 @@ let gameState = 'start';
             //invalidar tecla alt
             if(e.key == "Alt"){
               e.preventDefault();
-              //alert("tecla Invalida");
+              alert("tecla Invalida");
             }
           }
         });
@@ -167,7 +168,8 @@ let gameState = 'start';
           if (
             ball_coord.left <= paddle_1_coord.right &&
             ball_coord.top >= paddle_1_coord.top &&
-            ball_coord.bottom <= paddle_1_coord.bottom
+            ball_coord.bottom <= paddle_1_coord.bottom &&
+            ball_coord.right >= paddle_1_coord.left
           ) {
             dxd = 1;
             dx = Math.floor(Math.random() * 4) + 3;
@@ -177,7 +179,8 @@ let gameState = 'start';
           if (
             ball_coord.right >= paddle_2_coord.left &&
             ball_coord.top >= paddle_2_coord.top &&
-            ball_coord.bottom <= paddle_2_coord.bottom
+            ball_coord.bottom <= paddle_2_coord.bottom &&
+            ball_coord.left <= paddle_2_coord.right
           ) {
             dxd = 0;
             dx = Math.floor(Math.random() * 4) + 3;
