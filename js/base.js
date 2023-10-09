@@ -38,38 +38,7 @@ let gameState = 'start';
         let dy = Math.floor(Math.random() * 4) + 3;
         let dxd = Math.floor(Math.random() * 2);
         let dyd = Math.floor(Math.random() * 2);
-
-        //BONUS
-        // Cria um novo elemento HTML para representar o bônus
-        /*const bonus = document.createElement('div');
-        bonus.classList.add('bonus');
-
-
-        // Posiciona o bônus aleatoriamente no tabuleiro de jogo
-        bonus.style.top = Math.floor(Math.random() * board.offsetHeight) + 'px';
-        bonus.style.left = Math.floor(Math.random() * board.offsetWidth) + 'px';
-
-        // Adiciona o bônus ao tabuleiro de jogo
-        board.appendChild(bonus);
-
-        // Adiciona um listener de eventos ao elemento `bonus` para detectar quando a bola colidiu com ele
-        bonus.addEventListener('collision', () => {
-          function update() {
-            // Verifica a colisão da bola com o bônus
-            if (ball_coord.getBoundingClientRect().intersects(bonus.getBoundingClientRect())) {
-              // Atualiza a cor dos paddles
-              paddle_1.style.backgroundColor = Math.floor(Math.random() * 255) + ',' +
-                                              Math.floor(Math.random() * 255) + ',' +
-                                              Math.floor(Math.random() * 255);
-              paddle_2.style.backgroundColor = Math.floor(Math.random() * 255) + ',' +
-                                              Math.floor(Math.random() * 255) + ',' +
-                                              Math.floor(Math.random() * 255);
           
-              // Remove o bônus do tabuleiro
-              bonus.remove();
-            }}});*/
-
-              
         //Adiciona um listener de eventos ao documento para fazer a captura dos pressionamentos de teclas
         document.addEventListener('keydown', (e) => {
           //Se a tecla pressionada for enter, o jogo começa
@@ -165,16 +134,31 @@ let gameState = 'start';
               e.preventDefault();
               alert("tecla Invalida");
             }
+            //invalidar tecla enter ao iniciar o jogo.
+            if(e.key == "Enter"){
+              e.preventDefault();
+              alert("Aperte Enter para continuar");
+            }
           }
         });
 
         //Função de movimentação da bola onde dx é a direção horizontal, dy é a direção vertical e dxd e dyd é a direção da bola no proximo update
         function moveBall(dx, dy, dxd, dyd) {
-          //Verifica se a bola colidiu com as borda superior do tabuleiro, se sim a direção da bola é invertida
+          // verifica qual jogador chegou na marca de 5 pontos e reinicia o jogo.
+          if (score_1.innerHTML == 5 || score_2.innerHTML == 5) {
+          if (+score_1.innerHTML == 5) {
+              exibirVencedor("Jogador 1")
+            } else if (+score_2.innerHTML == 5) {
+              exibirVencedor("Jogador 2")
+            }
+            resetarjogo()
+            return
+          }
+          //Verifica se a bola colidiu com a borda superior do tabuleiro, se sim a direção da bola é invertida
           if (ball_coord.top <= board_coord.top) {
             dyd = 1;
           }       
-          //Verifica se a bola colidiu com as borda inferior do tabuleiro, se sim a direção da bola é invertida
+          //Verifica se a bola colidiu com a borda inferior do tabuleiro, se sim a direção da bola é invertida
           if (ball_coord.bottom >= board_coord.bottom) {
             dyd = 0;
           }
@@ -268,7 +252,33 @@ let gameState = 'start';
           ball_coord = ball.getBoundingClientRect();
           // Chama a função novamente
           requestAnimationFrame(() => {
-            moveBall(dx, dy, dxd, dyd);
+          moveBall(dx, dy, dxd, dyd);
           });
+        } 
+        // Essa função é usada quando o jogador atinge a marca de 5 pontos e reinica a posição da bola e do jogador 1 e 2.
+        function resetarjogo() {
+          score_1.innerHTML = "0"
+          score_2.innerHTML = "0"
+          paddle_1.style.top = "50%"
+          paddle_2.style.top = "50%"
+          ball.style = initial_ball.style
+          ball_coord = initial_ball_coord
+          gameState = "start"
+          message.innerHTML = "Press Enter to Play Pong"
+          message.style.left = "38vw"
         }
+        // Essa função cria um html para exibir qual jogador venceu a partida.
+        function exibirVencedor(vencedor) {
+          const vencedorElement = document.createElement("div")
+          vencedorElement.classList.add("vencedor")
+          vencedorElement.textContent = `Vencedor: ${vencedor}`
+          document.body.appendChild(vencedorElement);
+          setTimeout(() => {
+            const vencedorElement = document.querySelector(".vencedor");
+            if (vencedorElement) {
+              vencedorElement.remove(); // Remove o elemento de vitória após 3 segundos
+            }
+          }, 3000); 
+        }
+
         

@@ -191,3 +191,16 @@ body {
   inset 6px 0 30px black;
   border: 1px solid white;
 }
+
+.vencedor {
+  background-color: #000000; /* Cor verde */
+  color: #ffffff; /* Cor branca */
+  font-size: 24px; /* Tamanho da fonte */
+  font-weight: bold; /* Negrito */
+  padding: 10px; /* Espaçamento de dentro */
+  border-radius: 5px; /* Borda arredondada */
+  position: absolute; /* Posicionamento tela */
+  top: 25%; /* Vertical */
+  left: 50%; /* Horizontal*/
+  transform: translate(-50%, -50%); /* Centralizar */
+}
