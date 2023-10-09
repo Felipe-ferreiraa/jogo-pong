@@ -49,3 +49,8 @@ body {
     width: auto;
     height: auto;
 }
+
+.tutorial {
+    font-size: 20px;
+    color: white;
+}
